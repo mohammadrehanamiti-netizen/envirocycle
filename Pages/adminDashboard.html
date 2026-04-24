@@ -17,7 +17,10 @@
     <li><span style="color:var(--text-muted); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Admin Panel</span></li>
   </ul>
   <div style="display:flex;align-items:center;gap:0.75rem;" id="navAuthArea">
-    <span id="adminName" style="color:var(--text-secondary); font-size:0.85rem;"></span>
+    <div style="display:flex;align-items:center;gap:0.4rem; background:rgba(34,197,94,0.08); border:1px solid var(--border-glass); border-radius:8px; padding:0.35rem 0.75rem;">
+      <span style="font-size:0.9rem;">👤</span>
+      <span id="adminName" style="color:var(--primary-light); font-size:0.85rem; font-weight:600;">Admin</span>
+    </div>
     <a href="/logout" class="btn-logout">Log Out</a>
   </div>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -102,7 +105,7 @@
       if (userRes.ok) {
         const { user } = await userRes.json();
         if (user && user.role === 'admin') {
-          document.getElementById('adminName').textContent = `👤 ${user.name}`;
+          document.getElementById('adminName').textContent = user.name;
         } else {
           window.location.href = '/';
         }
