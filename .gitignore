@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+.env
+test-bcrypt.js
+test-db.js
+test-write-testdb.js
+test-write.js
+test-db.js
+test-write.js
+test-bcrypt.js
+test-write-testdb.js

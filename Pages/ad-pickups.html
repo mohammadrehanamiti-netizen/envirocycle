@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ad-Pickups | EnviroCycle</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 p-6">
+  <header class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-blue-700">Manage Pickup Requests</h1>
+    <a href="adminDashboard.html" class="text-blue-600 hover:underline">← Back to Dashboard</a>
+  </header>
+
+  <form id="addPickupForm" class="bg-white p-6 rounded-2xl shadow mb-8">
+  <h2 class="text-xl font-bold text-gray-800 mb-4">Add Pickup Request</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input type="text" name="name" placeholder="Name" required class="p-3 border rounded" />
+    <input type="email" name="email" placeholder="Email" required class="p-3 border rounded" />
+    <input type="text" name="address" placeholder="Address" required class="p-3 border rounded" />
+    <input type="date" name="date" required class="p-3 border rounded" />
+    <input type="text" name="materialType" placeholder="Material Type" required class="p-3 border rounded" />
+  </div>
+  <button type="submit" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">Add Pickup</button>
+</form>
+
+  <div class="bg-white p-6 rounded-xl shadow">
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr class="bg-gray-200 text-sm text-gray-700 uppercase">
+          <th class="py-3 px-4">#</th>
+          <th class="py-3 px-4">Name</th>
+          <th class="py-3 px-4">Email</th>
+          <th class="py-3 px-4">Address</th>
+          <th class="py-3 px-4">Date</th>
+          <th class="py-3 px-4">Material</th>
+          <th class="py-3 px-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="pickupTableBody" class="text-sm text-gray-600"></tbody>
+    </table>
+  </div>
+
+  <script>
+  document.getElementById("addPickupForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const body = {
+      name: form.name.value,
+      email: form.email.value,
+      address: form.address.value,
+      date: form.date.value,
+      materialType: form.materialType.value
+    };
+
+    const res = await fetch("/submit-pickup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert("Pickup added successfully");
+      loadPickups();
+      form.reset();
+    } else {
+      alert(data.message);
+    }
+  });
+    async function loadPickups() {
+      const res = await fetch("/api/admin/pickups");
+      const pickups = await res.json();
+      const table = document.getElementById("pickupTableBody");
+      table.innerHTML = "";
+      pickups.forEach((p, i) => {
+        table.innerHTML += `
+          <tr>
+            <td class="py-3 px-4">${i + 1}</td>
+            <td class="py-3 px-4">${p.name}</td>
+            <td class="py-3 px-4">${p.email}</td>
+            <td class="py-3 px-4">${p.address}</td>
+            <td class="py-3 px-4">${p.date}</td>
+            <td class="py-3 px-4">${p.materialType}</td>
+            <td class="py-3 px-4"><button onclick="deletePickup('${p._id}')" class="text-red-600 hover:underline">Delete</button></td>
+          </tr>`;
+      });
+    }
+
+    async function deletePickup(id) {
+      if (confirm("Delete this pickup?")) {
+        await fetch(`/api/admin/pickups/${id}`, { method: "DELETE" });
+        loadPickups();
+      }
+    }
+
+    loadPickups();
+  </script>
+</body>
+</html>

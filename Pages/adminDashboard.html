@@ -1,0 +1,70 @@
+<!-- adminDashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | EnviroCycle</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-green-100 min-h-screen p-6">
+  <!-- Header -->
+  <header class="flex justify-between items-center p-6">
+    <h1 class="text-3xl font-bold text-green-700">EnviroCycle Admin Dashboard</h1>
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
+        <li><a href="adminDashboard.html" class="text-green-800 font-bold">Dashboard</a></li>
+        <li><a href="ad-users.html" class="text-green-800 hover:text-green-600">Users</a></li>
+        <li><a href="adminProducts.html" class="text-green-800 hover:text-green-600">Products</a></li>
+        <li><a href="adminOrders.html" class="text-green-800 hover:text-green-600">Orders</a></li>
+        <li><a href="/logout" class="text-green-800 hover:text-green-600">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Stats -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="statsSection">
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h2 class="text-xl font-semibold text-gray-700">Total Users</h2>
+      <p id="userCount" class="text-3xl font-bold text-green-600">...</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h2 class="text-xl font-semibold text-gray-700">Pickup Requests</h2>
+      <p id="pickupCount" class="text-3xl font-bold text-blue-600">...</p>
+    </div>
+    <div class="bg-white p-6 rounded-2xl shadow">
+      <h2 class="text-xl font-semibold text-gray-700">Products Available</h2>
+      <p id="materialCount" class="text-3xl font-bold text-purple-600">...</p>
+    </div>
+  </div>
+
+
+  <!-- Quick Navigation -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <a href="./ad-users.html"
+      class="bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-2xl shadow text-lg font-semibold transition">Users
+      Management</a>
+    <a href="./adminOrders.html"
+      class="bg-blue-600 hover:bg-blue-700 text-white text-center py-4 rounded-2xl shadow text-lg font-semibold transition">Pickup
+      Orders</a>
+    <a href="./adminProducts.html"
+      class="bg-yellow-500 hover:bg-yellow-600 text-white text-center py-4 rounded-2xl shadow text-lg font-semibold transition">Products
+      Inventory</a>
+  </div>
+  <script>
+    async function loadStats() {
+      const response = await fetch("/api/admin/stats");
+      const stats = await response.json();
+      document.getElementById("userCount").innerText = stats.users;
+      document.getElementById("pickupCount").innerText = stats.pickups;
+      document.getElementById("materialCount").innerText = stats.products;
+    }
+    loadStats();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ad-Products | EnviroCycle</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-yellow-50 p-6">
+  <header class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-yellow-700">Manage Products</h1>
+    <a href="adminDashboard.html" class="text-yellow-600 hover:underline">← Back to Dashboard</a>
+  </header>
+
+  <form id="addProductForm" class="bg-white p-6 rounded-2xl shadow mb-8">
+  <h2 class="text-xl font-bold text-gray-800 mb-4">Add New Product</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <input type="text" name="name" placeholder="Product Name" required class="p-3 border rounded" />
+    <input type="text" name="description" placeholder="Description" required class="p-3 border rounded" />
+    <input type="number" name="price" placeholder="Price" required class="p-3 border rounded" />
+    <input type="text" name="image" placeholder="Image URL" class="p-3 border rounded" />
+  </div>
+  <button type="submit" class="mt-4 bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded">Add Product</button>
+</form>
+
+  <div class="bg-white p-6 rounded-xl shadow">
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr class="bg-gray-200 text-sm text-gray-700 uppercase">
+          <th class="py-3 px-4">#</th>
+          <th class="py-3 px-4">Image</th>
+          <th class="py-3 px-4">Name</th>
+          <th class="py-3 px-4">Description</th>
+          <th class="py-3 px-4">Price</th>
+          <th class="py-3 px-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="productTableBody" class="text-sm text-gray-600"></tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById("addProductForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const body = {
+      name: form.name.value,
+      description: form.description.value,
+      price: form.price.value,
+      image: form.image.value || "placeholder.jpg"
+    };
+
+    const res = await fetch("/api/admin/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+
+    const data = await res.json();
+    if (data.success) {
+      alert("Product added successfully");
+      loadProducts();
+      form.reset();
+    } else {
+      alert(data.message);
+    }
+  });
+    async function loadProducts() {
+      const res = await fetch("/api/admin/products");
+      const products = await res.json();
+      const table = document.getElementById("productTableBody");
+      table.innerHTML = "";
+      products.forEach((prod, i) => {
+        table.innerHTML += `
+          <tr>
+            <td class="py-3 px-4">${i + 1}</td>
+            <td class="py-3 px-4"><img src="${prod.image}" class="w-16 h-16 object-cover rounded" alt="${prod.name}" /></td>
+            <td class="py-3 px-4">${prod.name}</td>
+            <td class="py-3 px-4">${prod.description}</td>
+            <td class="py-3 px-4">₹${prod.price}</td>
+            <td class="py-3 px-4"><button onclick="deleteProduct('${prod._id}')" class="text-red-600 hover:underline">Delete</button></td>
+          </tr>`;
+      });
+    }
+
+    async function deleteProduct(id) {
+      if (confirm("Delete this product?")) {
+        await fetch(`/api/admin/products/${id}`, { method: "DELETE" });
+        loadProducts();
+      }
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>

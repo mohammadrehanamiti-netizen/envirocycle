@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reward Points | EnviroCycle</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-green-50 min-h-screen p-6 font-sans">
+
+  <header class="flex justify-between items-center mb-6">
+    <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️-Rewards</h1>
+    <a href="pickup.html" class="text-green-600 hover:text-green-800 text-sm">← Back to Home</a>
+  </header>
+
+  <main class="max-w-3xl mx-auto bg-white shadow rounded-xl p-6">
+    <!-- Points Card -->
+    <div class="text-center mb-6">
+      <p class="text-xl text-gray-600 mb-2">Current Points</p>
+      <p id="pointsValue" class="text-5xl font-bold text-green-700">0</p>
+
+      <!-- Progress Bar -->
+      <div class="w-full bg-gray-200 rounded-full h-6 mt-4">
+        <div id="progressBar" class="bg-green-500 h-6 rounded-full transition-all duration-500 ease-in-out"
+          style="width: 0%;"></div>
+      </div>
+      <p id="progressText" class="mt-1 text-sm text-gray-700">0%</p>
+    </div>
+
+    <!-- Badge or Reward Message -->
+    <div id="badge" class="text-center mt-4 hidden">
+      <p class="text-xl font-semibold text-purple-600">🏅 Congrats! You've earned a reward!</p>
+    </div>
+
+    <!-- Earning Rules Table -->
+    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">How to Earn Points</h2>
+    <table class="w-full text-left table-auto border border-gray-200">
+      <thead class="bg-green-100">
+        <tr>
+          <th class="p-3 font-semibold text-gray-700 border-b">Action</th>
+          <th class="p-3 font-semibold text-gray-700 border-b">Reward</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-600">
+        <tr>
+          <td class="p-3 border-b">Scheduling a pickup</td>
+          <td class="p-3 border-b">+10 points</td>
+        </tr>
+        <tr>
+          <td class="p-3 border-b">Weekly login</td>
+          <td class="p-3 border-b">+5 points</td>
+        </tr>
+        <tr>
+          <td class="p-3 border-b">Referring a friend</td>
+          <td class="p-3 border-b">+20 points</td>
+        </tr>
+        <tr>
+          <td class="p-3 border-b">Reaching 100 points</td>
+          <td class="p-3 border-b">Show special badge or message</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    async function loadPoints() {
+      try {
+        const userRes = await fetch("/api/user");
+        if (!userRes.ok) {
+          window.location.href = "/login";
+          return;
+        }
+
+        const { user } = await userRes.json();
+
+        if (user.role === "admin") {
+          alert("Admins don't earn points.");
+          window.location.href = "/adminDashboard.html";
+          return;
+        }
+
+        const pointsRes = await fetch("/api/points");
+        const pointsData = await pointsRes.json();
+        const points = pointsData.points || 0;
+
+        document.getElementById("pointsValue").innerText = points;
+
+        const percent = Math.min(100, (points / 100) * 100);
+        document.getElementById("progressBar").style.width = percent + "%";
+        document.getElementById("progressText").innerText = `${percent.toFixed(0)}%`;
+
+        const badge = document.getElementById("badge");
+        if (points >= 100) {
+          badge.classList.remove("hidden");
+        } else {
+          badge.classList.add("hidden");
+        }
+
+      } catch (error) {
+        console.error("Error loading points:", error);
+      }
+    }
+
+    loadPoints();
+  </script>
+</body>
+
+</html>

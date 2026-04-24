@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | EnviroCycle</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+</head>
+<body class="bg-green-100">
+  <header class="flex justify-between items-center p-6">
+    <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️</h1>
+    <nav>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
+        <li><a href="index.html#pricingSection" class="text-green-800 hover:text-green-600">Products</a></li> 
+        <li><a href="pickup.html" class="text-green-800 hover:text-green-600">Pick Up</a></li>
+        <li><a href="contact.html" class="text-green-800 hover:text-green-600">Contact</a></li>
+        <li><a href="login.html" class="text-green-800 hover:text-green-600">Log In</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="flex justify-center items-center mt-28">
+    <div class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+      <h2 class="text-3xl font-bold text-green-600 text-center mb-6">Welcome Back</h2>
+      <form id="login-form">
+        <div class="mb-4">
+          <label for="email" class="block text-gray-700">Email Address</label>
+          <input type="email" id="email" name="email" required placeholder="Enter your email"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
+        </div>
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700">Password</label>
+          <input type="password" id="password" name="password" required placeholder="Enter your password"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" />
+        </div>
+        <p id="errorMsg" class="hidden text-red-600 text-sm mb-3"></p>
+        <button type="submit"
+          class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
+          Log In
+        </button>
+      </form>
+      <p class="text-gray-600 text-center mt-4">Don't have an account?
+        <a href="signup.html" class="text-green-600 hover:underline">Sign Up</a>
+      </p>
+    </div>
+  </div>
+
+  <footer class="bg-green-600 text-white py-6 mt-28">
+    <p class="text-center">© 2025 EnviroCycle. All rights reserved.</p>
+  </footer>
+
+  <script>
+  const form = document.getElementById("login-form");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    try {
+      const res = await fetch("/login-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        localStorage.setItem("userEmail", email);
+        window.location.href = data.redirect;
+      } else {
+        alert(data.message || "Login failed.");
+      }
+    } catch (err) {
+      console.error("Error during login:", err);
+      alert("Something went wrong. Please try again.");
+    }
+  });
+</script>
+
+</body>
+</html>

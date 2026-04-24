@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register | EnviroCycle</title>
+  <link rel="icon" href="./images/favicon.png" type="image/png"/>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-green-100">
+
+<header class="flex justify-between items-center p-6">
+  <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️</h1>
+  <nav>
+    <ul class="flex space-x-6">
+      <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
+      <li><a href="products.html" class="text-green-800 hover:text-green-600">Product</a></li>
+      <li><a href="pickup.html" class="text-green-800 hover:text-green-600">Pick Up</a></li>
+      <li><a href="contact.html" class="text-green-800 hover:text-green-600">Contact</a></li>
+      <li><a href="About.html" class="text-green-800 hover:text-green-600">About Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="flex justify-center items-center mt-28">
+  <div class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
+    <h2 class="text-3xl font-bold text-green-600 text-center mb-6">Register</h2>
+
+    <form class="space-y-5" id="signupForm" action="/submit-form" method="POST">
+      <div>
+        <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
+        <input type="text" id="fullname" name="name" required
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input type="email" id="email" name="email" required
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+      </div>
+
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+      </div>
+
+      <div>
+        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+        <select id="role" name="role" required
+                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500">
+          <option value="">-- Select Role --</option>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" name="password" required
+               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+      </div>
+
+      <button type="submit"
+              class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
+        Register
+      </button>
+    </form>
+  </div>
+</div>
+
+<footer class="bg-green-600 text-white py-6 mt-28">
+  <p class="text-center">© 2025 EnviroCycle. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById("signupForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      phone: e.target.phone.value,
+      password: e.target.password.value,
+      role: e.target.role.value
+    };
+
+    const res = await fetch("/submit-form", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      if (formData.role === "admin") {
+        window.location.href = "/adminDashboard.html";
+      } else {
+        window.location.href = "/index.html";
+      }
+    } else {
+      alert(data.message || "Signup failed!");
+    }
+  });
+</script>
+
+</body>
+</html>
