@@ -2,108 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Register | EnviroCycle</title>
-  <link rel="icon" href="./images/favicon.png" type="image/png"/>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <meta name="description" content="Create your free EnviroCycle account and start earning rewards for recycling." />
+  <link rel="icon" href="./images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
-<body class="bg-green-100">
+<body>
+<div class="bg-mesh"></div>
+<div id="toast-container"></div>
 
-<header class="flex justify-between items-center p-6">
-  <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️</h1>
-  <nav>
-    <ul class="flex space-x-6">
-      <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
-      <li><a href="products.html" class="text-green-800 hover:text-green-600">Product</a></li>
-      <li><a href="pickup.html" class="text-green-800 hover:text-green-600">Pick Up</a></li>
-      <li><a href="contact.html" class="text-green-800 hover:text-green-600">Contact</a></li>
-      <li><a href="About.html" class="text-green-800 hover:text-green-600">About Us</a></li>
-    </ul>
-  </nav>
-</header>
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">EnviroCycle <span>♻</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="pickup.html">Pick Up</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div id="navAuthArea">
+    <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
 
-<div class="flex justify-center items-center mt-28">
-  <div class="bg-white shadow-md rounded-lg p-8 max-w-md w-full">
-    <h2 class="text-3xl font-bold text-green-600 text-center mb-6">Register</h2>
+<div class="page-wrapper" style="display:flex; align-items:center; justify-content:center; padding:5rem 1rem;">
+  <div class="form-wrapper" style="max-width:520px;">
+    <div style="text-align:center; margin-bottom:2rem;">
+      <div style="font-size:3rem; margin-bottom:0.75rem;">🌱</div>
+      <h2>Create Account</h2>
+      <p class="subtitle">Join EnviroCycle and start earning eco-rewards</p>
+    </div>
 
-    <form class="space-y-5" id="signupForm" action="/submit-form" method="POST">
-      <div>
-        <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
-        <input type="text" id="fullname" name="name" required
-               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+    <form id="signupForm">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" name="name" placeholder="John Doe" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}" required />
+        </div>
       </div>
-
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-        <input type="email" id="email" name="email" required
-               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
       </div>
-
-      <div>
-        <label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required
-               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="6" />
       </div>
-
-      <div>
-        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
-        <select id="role" name="role" required
-                class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500">
-          <option value="">-- Select Role --</option>
-          <option value="user">User</option>
-          <option value="admin">Admin</option>
-        </select>
+      <div class="form-group" style="display:none;">
+        <input type="hidden" name="role" value="user" />
       </div>
-
-      <div>
-        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-        <input type="password" id="password" name="password" required
-               class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-xl shadow-sm focus:ring-green-500 focus:border-green-500" />
-      </div>
-
-      <button type="submit"
-              class="w-full bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition">
-        Register
+      <div id="errorMsg" style="display:none; color:#fca5a5; font-size:0.85rem; margin-bottom:1rem; padding:0.75rem; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.25); border-radius:8px;"></div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;" id="signupBtn">
+        Create Account →
       </button>
     </form>
+
+    <div class="form-divider">— or —</div>
+    <p style="text-align:center; color:var(--text-secondary); font-size:0.88rem;">
+      Already have an account? <a href="login.html" style="color:var(--primary-light); font-weight:600;">Sign in →</a>
+    </p>
   </div>
 </div>
 
-<footer class="bg-green-600 text-white py-6 mt-28">
-  <p class="text-center">© 2025 EnviroCycle. All rights reserved.</p>
-</footer>
-
+<script src="/app.js"></script>
 <script>
-  document.getElementById("signupForm").addEventListener("submit", async (e) => {
+  document.getElementById('signupForm').addEventListener('submit', async (e) => {
     e.preventDefault();
+    const btn = document.getElementById('signupBtn');
+    const errDiv = document.getElementById('errorMsg');
+    btn.textContent = 'Creating account...';
+    btn.disabled = true;
+    errDiv.style.display = 'none';
 
     const formData = {
       name: e.target.name.value,
       email: e.target.email.value,
       phone: e.target.phone.value,
       password: e.target.password.value,
-      role: e.target.role.value
+      role: 'user'
     };
 
-    const res = await fetch("/submit-form", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await res.json();
-
-    if (data.success) {
-      if (formData.role === "admin") {
-        window.location.href = "/adminDashboard.html";
+    try {
+      const res = await fetch('/submit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if (data.success) {
+        showToast('Account created! Redirecting to login...', 'success');
+        setTimeout(() => window.location.href = 'login.html', 1200);
       } else {
-        window.location.href = "/index.html";
+        errDiv.textContent = data.message || 'Signup failed. Please try again.';
+        errDiv.style.display = 'block';
+        btn.textContent = 'Create Account →';
+        btn.disabled = false;
       }
-    } else {
-      alert(data.message || "Signup failed!");
+    } catch {
+      errDiv.textContent = 'Something went wrong. Please try again.';
+      errDiv.style.display = 'block';
+      btn.textContent = 'Create Account →';
+      btn.disabled = false;
     }
   });
 </script>
-
 </body>
 </html>

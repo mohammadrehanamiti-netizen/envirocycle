@@ -1,227 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products | EnviroCycle</title>
-  <link rel="icon" href="./images/favicon.png" type="image/png"/>
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Products | EnviroCycle</title>
+  <meta name="description" content="Shop premium eco-friendly products made from 100% recycled materials." />
+  <link rel="icon" href="./images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
-<body class="bg-green-100">
-    <header class="flex justify-between items-center p-6">
-        <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️</h1>
-        <nav>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
-                <li><a href="products.html" class="text-green-800 hover:text-green-600">Products</a></li>
-                <li><a href="pickup.html" class="text-green-800 hover:text-green-600">Pick Up</a></li>
-                <li><a href="contact.html" class="text-green-800 hover:text-green-600">Contact</a></li>
-                <li><a href="login.html" class="text-green-800 hover:text-green-600">Log In</a></li>
-                <!-- <li><a href="About.html" class="text-green-800 hover:text-green-600">About Us</a></li> -->
-            </ul>
-        </nav>
-    </header>
-    <h2 class="text-4xl font-bold text-green-700 mb-4 text-center">Our Products</h2>
-    <!-- Product Container -->
-    <div class="max-w-7xl mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<body>
+<div class="bg-mesh"></div>
+<div id="toast-container"></div>
 
-            <!-- Product 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/RecycledLamps.jpg" alt="Recycled Lamps" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Recycled Lamps</h2>
-                    <p class="text-gray-600">Made from Recycled Plastics</p>
-                    <p class="text-green-600 font-bold text-xl">₹2,999</p>
-                    <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition" onclick="buy()">Buy Now</button>
-                </div>
-            </div>
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">EnviroCycle <span>♻</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html" class="active">Products</a></li>
+    <li><a href="pickup.html">Pick Up</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="navLoginLi"><a href="login.html">Log In</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.5rem;" id="navAuthArea">
+    <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
 
-            <!-- Product 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/PackingMaterial.jpg" alt="Packing Material" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Packing Material</h2>
-                    <p class="text-gray-600">Made from Recycled papers</p>
-                    <p class="text-green-600 font-bold text-xl">₹499</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
+<div class="page-wrapper">
+  <section class="hero" style="padding-bottom:3rem;">
+    <div class="hero-badge">🛍️ Eco Store</div>
+    <h1>Shop <span class="highlight">Sustainably</span></h1>
+    <p>Every product in our store is crafted from 100% recycled or sustainable materials.</p>
+  </section>
 
-            <!-- Product 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/waterbottles.jpg" alt="Bamboo Water Bottle" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Bamboo Water Bottle</h2>
-                    <p class="text-gray-600">Bottle Made From Bamboo</p>
-                    <p class="text-green-600 font-bold text-xl">₹999</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 4 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/RecycledPackaging.jpg" alt="Packing Material" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Packing Material</h2>
-                    <p class="text-gray-600">Made from Recycled papers</p>
-                    <p class="text-green-600 font-bold text-xl">₹699</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 5 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/RecycledPenciles.jpg" alt="Penciles" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Penciles</h2>
-                    <p class="text-gray-600">Recycled Pencile Made from papers</p>
-                    <p class="text-green-600 font-bold text-xl">₹99</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 6 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/Glass.jpg" alt="Bamboo Water Glasses" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Bamboo Water Glasses</h2>
-                    <p class="text-gray-600">Glasses Made From Bamboo</p>
-                    <p class="text-green-600 font-bold text-xl">₹199</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 7 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/Bag.jpg" alt="Eco-friendlu Bag" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Eco-friendlu Bag</h2>
-                    <p class="text-gray-600">Made from Recycled tree waste</p>
-                    <p class="text-green-600 font-bold text-xl">₹599</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 8 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/plantstand.jpg" alt="plant stand" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">plant stand</h2>
-                    <p class="text-gray-600">Bottle Made From recycled plastic</p>
-                    <p class="text-green-600 font-bold text-xl">₹799</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Product 9 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/stool.jpg" alt="Recycled Stools" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Recycled Stools</h2>
-                    <p class="text-gray-600">Made from Recycled plastics</p>
-                    <p class="text-green-600 font-bold text-xl">₹499</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-            <!-- Product 10-->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/tabel.jpg" alt="Recycled Tables" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Recycled writing Tables</h2>
-                    <p class="text-gray-600">Made from Recycled plastics</p>
-                    <p class="text-green-600 font-bold text-xl">₹599</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-            <!-- Product 11-->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/Jar.jpg" alt="Bottle Jar" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Bottle Jars</h2>
-                    <p class="text-gray-600">Made from Reused Bottles</p>
-                    <p class="text-green-600 font-bold text-xl">₹149</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Dynamic Products will be injected here -->
-            <div id="dynamicProducts" class="contents"></div>
-        </div>
+  <!-- Filter Bar -->
+  <section style="padding: 0 2rem 1.5rem;">
+    <div class="container">
+      <div style="display:flex; gap:0.75rem; flex-wrap:wrap; align-items:center;">
+        <span style="color:var(--text-muted); font-size:0.85rem; font-weight:600;">Filter:</span>
+        <button class="btn btn-primary btn-sm filter-btn" data-filter="all">All Products</button>
+        <button class="btn btn-outline btn-sm filter-btn" data-filter="plastic">♻ Plastic</button>
+        <button class="btn btn-outline btn-sm filter-btn" data-filter="paper">📄 Paper</button>
+        <button class="btn btn-outline btn-sm filter-btn" data-filter="bamboo">🎋 Bamboo</button>
+      </div>
     </div>
-    <script>
-        async function loadAllProducts() {
-            try {
-                const res = await fetch("/api/admin/products");
-                const products = await res.json();
-                const container = document.getElementById("dynamicProducts");
-                
-                products.forEach(prod => {
-                    const productHtml = `
-                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                            <img src="${prod.image}" alt="${prod.name}" class="w-full h-60 object-cover" onerror="this.src='./images/favicon.png'">
-                            <div class="p-4">
-                                <h2 class="text-lg font-bold">${prod.name}</h2>
-                                <p class="text-gray-600">${prod.description}</p>
-                                <p class="text-green-600 font-bold text-xl">₹${prod.price}</p>
-                                <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20(${prod.name})%20from%20EnviroCycle.">
-                                    <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                                </a>
-                            </div>
-                        </div>`;
-                    container.innerHTML += productHtml;
-                });
-            } catch (err) {
-                console.error("Error loading dynamic products:", err);
-            }
-        }
-        loadAllProducts();
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            try {
-                const res = await fetch("/api/user");
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.user && data.user.loggedIn) {
-                        const nav = document.querySelector("nav ul");
-                        if (nav) {
-                            const loginLink = Array.from(nav.querySelectorAll("a")).find(a => a.textContent.trim() === "Log In");
-                            if (loginLink) {
-                                const li = loginLink.parentElement;
-                                li.innerHTML = `<a href="points.html" class="text-green-800 hover:text-green-600 font-bold">👤 ${data.user.name}</a>`;
-                                
-                                const logoutLi = document.createElement("li");
-                                logoutLi.innerHTML = `<a href="/logout" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">Log Out</a>`;
-                                nav.appendChild(logoutLi);
-                            }
-                        }
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching user status:", error);
-            }
-        });
-    </script>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid-3" id="productsGrid">
+        <!-- Static products -->
+        <div class="card product-card reveal" data-cat="plastic">
+          <div class="product-badge">Plastic</div>
+          <img src="./images/RecycledLamps.jpg" alt="Recycled Lamps" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Recycled Lamps</h3>
+            <p>Made from Recycled Plastics</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹2,999</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Recycled%20Lamps%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="paper">
+          <div class="product-badge">Paper</div>
+          <img src="./images/PackingMaterial.jpg" alt="Packing Material" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Packing Material</h3>
+            <p>Made from Recycled papers</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹499</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Packing%20Material%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="bamboo">
+          <div class="product-badge">Bamboo</div>
+          <img src="./images/waterbottles.jpg" alt="Bamboo Water Bottle" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Bamboo Water Bottle</h3>
+            <p>Bottle Made From Bamboo</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹999</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Bamboo%20Water%20Bottle%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="paper">
+          <div class="product-badge">Paper</div>
+          <img src="./images/RecycledPackaging.jpg" alt="Recycled Packaging" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Recycled Packaging</h3>
+            <p>Made from Recycled papers</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹699</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Recycled%20Packaging%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="paper">
+          <div class="product-badge">Paper</div>
+          <img src="./images/RecycledPenciles.jpg" alt="Recycled Pencils" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Recycled Pencils</h3>
+            <p>Recycled Pencils Made from papers</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹99</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Recycled%20Pencils%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="bamboo">
+          <div class="product-badge">Bamboo</div>
+          <img src="./images/Glass.jpg" alt="Bamboo Water Glasses" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Bamboo Water Glasses</h3>
+            <p>Glasses Made From Bamboo</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹199</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Bamboo%20Water%20Glasses%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="paper">
+          <div class="product-badge">Eco</div>
+          <img src="./images/Bag.jpg" alt="Eco-friendly Bag" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Eco-friendly Bag</h3>
+            <p>Made from Recycled tree waste</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹599</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Eco-friendly%20Bag%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="plastic">
+          <div class="product-badge">Plastic</div>
+          <img src="./images/plantstand.jpg" alt="Plant Stand" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Plant Stand</h3>
+            <p>Made from Recycled plastic</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹799</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Plant%20Stand%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="plastic">
+          <div class="product-badge">Plastic</div>
+          <img src="./images/stool.jpg" alt="Recycled Stools" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Recycled Stools</h3>
+            <p>Made from Recycled plastics</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹499</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Recycled%20Stools%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="plastic">
+          <div class="product-badge">Plastic</div>
+          <img src="./images/tabel.jpg" alt="Recycled Tables" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Recycled Writing Tables</h3>
+            <p>Made from Recycled plastics</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹599</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Recycled%20Tables%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card product-card reveal" data-cat="plastic">
+          <div class="product-badge">Eco</div>
+          <img src="./images/Jar.jpg" alt="Bottle Jars" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>Bottle Jars</h3>
+            <p>Made from Reused Bottles</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+              <span class="product-card-price">₹149</span>
+              <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20Bottle%20Jars%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+            </div>
+          </div>
+        </div>
+        <!-- Dynamic DB products will be injected here -->
+        <div id="dynamicProducts" style="display:contents;"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand">EnviroCycle ♻</div><p>Making recycling easy, rewarding, and impactful.</p></div>
+        <div class="footer-col"><h4>Quick Links</h4><a href="index.html">Home</a><a href="products.html">Products</a><a href="pickup.html">Schedule Pickup</a><a href="contact.html">Contact</a></div>
+        <div class="footer-col"><h4>Contact</h4><p>📞 +91 98752 14808</p><p>✉️ envirocycle@gmail.com</p></div>
+      </div>
+      <div class="footer-bottom"><p>© 2025 EnviroCycle. All rights reserved.</p></div>
+    </div>
+  </footer>
+</div>
+
+<script src="/app.js"></script>
+<script>
+  // Load dynamic products from DB
+  async function loadDynamicProducts() {
+    try {
+      const res = await fetch('/api/admin/products');
+      const products = await res.json();
+      const container = document.getElementById('dynamicProducts');
+      products.forEach(prod => {
+        container.innerHTML += `
+          <div class="card product-card reveal" data-cat="eco">
+            <div class="product-badge">New</div>
+            <img src="${prod.image}" alt="${prod.name}" class="w-full h-60 object-cover" onerror="this.src='./images/favicon.png'">
+            <div class="product-card-body">
+              <h3>${prod.name}</h3>
+              <p>${prod.description}</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
+                <span class="product-card-price">₹${prod.price}</span>
+                <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20${encodeURIComponent(prod.name)}%20from%20EnviroCycle." class="btn btn-primary btn-sm" target="_blank">Buy →</a>
+              </div>
+            </div>
+          </div>`;
+      });
+    } catch(e) { console.log('No dynamic products'); }
+  }
+  loadDynamicProducts();
+
+  // Filter functionality
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-outline'); });
+      btn.classList.add('btn-primary'); btn.classList.remove('btn-outline');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.cat === filter) ? '' : 'none';
+      });
+    });
+  });
+</script>
 </body>
 </html>

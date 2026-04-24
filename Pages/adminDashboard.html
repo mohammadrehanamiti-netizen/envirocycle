@@ -1,70 +1,121 @@
-<!-- adminDashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard | EnviroCycle</title>
   <link rel="icon" href="./images/favicon.png" type="image/png" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/style.css" />
 </head>
+<body>
+<div class="bg-mesh"></div>
+<div id="toast-container"></div>
 
-<body class="bg-green-100 min-h-screen p-6">
-  <!-- Header -->
-  <header class="flex justify-between items-center p-6">
-    <h1 class="text-3xl font-bold text-green-700">EnviroCycle Admin Dashboard</h1>
-    <nav>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
-        <li><a href="adminDashboard.html" class="text-green-800 font-bold">Dashboard</a></li>
-        <li><a href="ad-users.html" class="text-green-800 hover:text-green-600">Users</a></li>
-        <li><a href="adminProducts.html" class="text-green-800 hover:text-green-600">Products</a></li>
-        <li><a href="adminOrders.html" class="text-green-800 hover:text-green-600">Orders</a></li>
-        <li><a href="/logout" class="text-green-800 hover:text-green-600">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Stats -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" id="statsSection">
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h2 class="text-xl font-semibold text-gray-700">Total Users</h2>
-      <p id="userCount" class="text-3xl font-bold text-green-600">...</p>
-    </div>
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h2 class="text-xl font-semibold text-gray-700">Pickup Requests</h2>
-      <p id="pickupCount" class="text-3xl font-bold text-blue-600">...</p>
-    </div>
-    <div class="bg-white p-6 rounded-2xl shadow">
-      <h2 class="text-xl font-semibold text-gray-700">Products Available</h2>
-      <p id="materialCount" class="text-3xl font-bold text-purple-600">...</p>
-    </div>
+<nav class="navbar">
+  <a href="adminDashboard.html" class="navbar-brand">EnviroCycle <span>⚙</span></a>
+  <ul class="nav-links" id="navLinks" style="display:flex;">
+    <li><span style="color:var(--text-muted); font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em;">Admin Panel</span></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.75rem;" id="navAuthArea">
+    <span id="adminName" style="color:var(--text-secondary); font-size:0.85rem;"></span>
+    <a href="/logout" class="btn-logout">Log Out</a>
   </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
 
+<div class="page-wrapper">
+  <div class="admin-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-section-title">Navigation</div>
+      <a href="adminDashboard.html" class="sidebar-link active"><span class="sidebar-icon">📊</span> Dashboard</a>
+      <a href="ad-users.html" class="sidebar-link"><span class="sidebar-icon">👥</span> Users</a>
+      <a href="adminProducts.html" class="sidebar-link"><span class="sidebar-icon">🛍️</span> Products</a>
+      <a href="adminOrders.html" class="sidebar-link"><span class="sidebar-icon">🚛</span> Pickup Orders</a>
+      <div class="sidebar-section-title">Site</div>
+      <a href="index.html" class="sidebar-link"><span class="sidebar-icon">🏠</span> Public Site</a>
+      <a href="/logout" class="sidebar-link" style="color:#fca5a5;"><span class="sidebar-icon">🚪</span> Logout</a>
+    </aside>
 
-  <!-- Quick Navigation -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <a href="./ad-users.html"
-      class="bg-green-600 hover:bg-green-700 text-white text-center py-4 rounded-2xl shadow text-lg font-semibold transition">Users
-      Management</a>
-    <a href="./adminOrders.html"
-      class="bg-blue-600 hover:bg-blue-700 text-white text-center py-4 rounded-2xl shadow text-lg font-semibold transition">Pickup
-      Orders</a>
-    <a href="./adminProducts.html"
-      class="bg-yellow-500 hover:bg-yellow-600 text-white text-center py-4 rounded-2xl shadow text-lg font-semibold transition">Products
-      Inventory</a>
+    <!-- Main -->
+    <main class="admin-main">
+      <div style="margin-bottom:2rem;">
+        <h1 style="font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:800; margin-bottom:0.25rem;">Dashboard Overview</h1>
+        <p style="color:var(--text-secondary); font-size:0.9rem;">Welcome back! Here's what's happening with EnviroCycle.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid-4 reveal" style="margin-bottom:2rem;">
+        <div class="stat-card green">
+          <div class="stat-icon">👥</div>
+          <div class="stat-label">Total Users</div>
+          <div class="stat-value" id="userCount">...</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon">🚛</div>
+          <div class="stat-label">Pickup Requests</div>
+          <div class="stat-value" id="pickupCount">...</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-icon">🛍️</div>
+          <div class="stat-label">Products</div>
+          <div class="stat-value" id="productCount">...</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">♻️</div>
+          <div class="stat-label">kg Recycled</div>
+          <div class="stat-value" id="materialCount">...</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div style="margin-bottom:2rem;">
+        <h2 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem; color:var(--text-secondary);">Quick Actions</h2>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1rem;">
+          <a href="ad-users.html" class="feature-card" style="text-decoration:none; display:block;">
+            <div class="feature-icon">👥</div>
+            <h3>Manage Users</h3>
+            <p>View, add or remove user accounts.</p>
+          </a>
+          <a href="adminOrders.html" class="feature-card" style="text-decoration:none; display:block;">
+            <div class="feature-icon">🚛</div>
+            <h3>Pickup Orders</h3>
+            <p>Review and manage all pickup requests.</p>
+          </a>
+          <a href="adminProducts.html" class="feature-card" style="text-decoration:none; display:block;">
+            <div class="feature-icon">🛍️</div>
+            <h3>Product Inventory</h3>
+            <p>Add new products to the eco-store.</p>
+          </a>
+        </div>
+      </div>
+
+    </main>
   </div>
-  <script>
-    async function loadStats() {
-      const response = await fetch("/api/admin/stats");
-      const stats = await response.json();
-      document.getElementById("userCount").innerText = stats.users;
-      document.getElementById("pickupCount").innerText = stats.pickups;
-      document.getElementById("materialCount").innerText = stats.products;
-    }
-    loadStats();
-  </script>
+</div>
+
+<script src="/app.js"></script>
+<script>
+  async function loadStats() {
+    try {
+      const userRes = await fetch('/api/user');
+      if (userRes.ok) {
+        const { user } = await userRes.json();
+        if (user && user.role === 'admin') {
+          document.getElementById('adminName').textContent = `👤 ${user.name}`;
+        } else {
+          window.location.href = '/';
+        }
+      }
+      const res = await fetch('/api/admin/stats');
+      const stats = await res.json();
+      document.getElementById('userCount').textContent = stats.users;
+      document.getElementById('pickupCount').textContent = stats.pickups;
+      document.getElementById('productCount').textContent = stats.products;
+      document.getElementById('materialCount').textContent = (stats.materialRecycled || 0).toFixed(1);
+    } catch(e) { console.error(e); }
+  }
+  loadStats();
+</script>
 </body>
-
 </html>

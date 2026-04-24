@@ -1,111 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Reward Points | EnviroCycle</title>
+  <title>My Rewards | EnviroCycle</title>
+  <meta name="description" content="Track your EnviroCycle reward points and eco-badges." />
   <link rel="icon" href="./images/favicon.png" type="image/png" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/style.css" />
 </head>
+<body>
+<div class="bg-mesh"></div>
+<div id="toast-container"></div>
 
-<body class="bg-green-50 min-h-screen p-6 font-sans">
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">EnviroCycle <span>♻</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="pickup.html">Pick Up</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="navLoginLi"></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.5rem;" id="navAuthArea">
+    <a href="/logout" class="btn-logout">Log Out</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
 
-  <header class="flex justify-between items-center mb-6">
-    <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️-Rewards</h1>
-    <a href="pickup.html" class="text-green-600 hover:text-green-800 text-sm">← Back to Home</a>
-  </header>
+<div class="page-wrapper">
+  <section class="section">
+    <div class="container" style="max-width:760px;">
 
-  <main class="max-w-3xl mx-auto bg-white shadow rounded-xl p-6">
-    <!-- Points Card -->
-    <div class="text-center mb-6">
-      <p class="text-xl text-gray-600 mb-2">Current Points</p>
-      <p id="pointsValue" class="text-5xl font-bold text-green-700">0</p>
-
-      <!-- Progress Bar -->
-      <div class="w-full bg-gray-200 rounded-full h-6 mt-4">
-        <div id="progressBar" class="bg-green-500 h-6 rounded-full transition-all duration-500 ease-in-out"
-          style="width: 0%;"></div>
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <div class="hero-badge" style="display:inline-flex;" id="userGreeting">🌿 My Dashboard</div>
+        <h1 style="font-family:'Space Grotesk',sans-serif; font-size:2.5rem; font-weight:800; margin:1rem 0 0.5rem;">Your Eco <span style="color:var(--primary-light)">Rewards</span></h1>
+        <p style="color:var(--text-secondary);">Track your points and see how you're making a difference.</p>
       </div>
-      <p id="progressText" class="mt-1 text-sm text-gray-700">0%</p>
+
+      <!-- Points Card -->
+      <div class="points-card reveal" style="margin-bottom:2rem;">
+        <div style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-muted); font-weight:700; margin-bottom:0.5rem;">Total Points Earned</div>
+        <div class="points-value" id="pointsValue">...</div>
+        <div class="points-label">Eco Points</div>
+        <div style="margin-top:1.5rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem; font-size:0.82rem; color:var(--text-secondary);">
+            <span>Progress to 100pts</span>
+            <span id="progressPercent">0%</span>
+          </div>
+          <div class="progress-bar-wrap">
+            <div class="progress-bar" id="progressBar" style="width:0%"></div>
+          </div>
+        </div>
+        <div id="badgeArea" style="margin-top:1.5rem; display:none;">
+          <div style="display:inline-flex; align-items:center; gap:0.5rem; background:rgba(163,230,53,0.15); border:1px solid rgba(163,230,53,0.35); border-radius:100px; padding:0.5rem 1.25rem;">
+            <span style="font-size:1.2rem;">🏅</span>
+            <span style="font-weight:700; color:#d9f99d; font-size:0.9rem;">Eco Champion Badge Unlocked!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- How to earn -->
+      <div class="card reveal" style="overflow:visible;">
+        <div style="padding:1.5rem 1.5rem 0; border-bottom:1px solid var(--border-glass); padding-bottom:1rem; margin-bottom:0;">
+          <h2 style="font-size:1.1rem; font-weight:700;">How to Earn Points</h2>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Action</th>
+              <th>Reward</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Schedule a Pickup</td><td><span class="badge badge-green">+10 pts</span></td><td><span class="badge badge-blue">Repeatable</span></td></tr>
+            <tr><td>Weekly Login</td><td><span class="badge badge-green">+5 pts</span></td><td><span class="badge badge-blue">Weekly</span></td></tr>
+            <tr><td>Refer a Friend</td><td><span class="badge badge-yellow">+20 pts</span></td><td><span class="badge badge-blue">Once</span></td></tr>
+            <tr><td>Reach 100 Points</td><td><span class="badge badge-yellow">🏅 Badge</span></td><td><span class="badge badge-green">Milestone</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem;">
+        <a href="pickup.html" class="btn btn-primary" style="justify-content:center; padding:0.9rem;">
+          🚛 Schedule Pickup +10pts
+        </a>
+        <a href="products.html" class="btn btn-outline" style="justify-content:center; padding:0.9rem;">
+          🛍️ Shop Eco Products
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Badge or Reward Message -->
-    <div id="badge" class="text-center mt-4 hidden">
-      <p class="text-xl font-semibold text-purple-600">🏅 Congrats! You've earned a reward!</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom"><p>© 2025 EnviroCycle. All rights reserved.</p></div>
     </div>
+  </footer>
+</div>
 
-    <!-- Earning Rules Table -->
-    <h2 class="text-2xl font-bold text-gray-800 mt-10 mb-4">How to Earn Points</h2>
-    <table class="w-full text-left table-auto border border-gray-200">
-      <thead class="bg-green-100">
-        <tr>
-          <th class="p-3 font-semibold text-gray-700 border-b">Action</th>
-          <th class="p-3 font-semibold text-gray-700 border-b">Reward</th>
-        </tr>
-      </thead>
-      <tbody class="text-gray-600">
-        <tr>
-          <td class="p-3 border-b">Scheduling a pickup</td>
-          <td class="p-3 border-b">+10 points</td>
-        </tr>
-        <tr>
-          <td class="p-3 border-b">Weekly login</td>
-          <td class="p-3 border-b">+5 points</td>
-        </tr>
-        <tr>
-          <td class="p-3 border-b">Referring a friend</td>
-          <td class="p-3 border-b">+20 points</td>
-        </tr>
-        <tr>
-          <td class="p-3 border-b">Reaching 100 points</td>
-          <td class="p-3 border-b">Show special badge or message</td>
-        </tr>
-      </tbody>
-    </table>
-  </main>
+<script src="/app.js"></script>
+<script>
+  async function loadPoints() {
+    try {
+      const userRes = await fetch('/api/user');
+      if (!userRes.ok) { window.location.href = '/login'; return; }
+      const { user } = await userRes.json();
+      if (user.role === 'admin') { window.location.href = '/adminDashboard.html'; return; }
 
-  <script>
-    async function loadPoints() {
-      try {
-        const userRes = await fetch("/api/user");
-        if (!userRes.ok) {
-          window.location.href = "/login";
-          return;
-        }
+      document.getElementById('userGreeting').textContent = `👋 Welcome, ${user.name}`;
 
-        const { user } = await userRes.json();
+      // Update nav
+      const navAuth = document.getElementById('navAuthArea');
+      navAuth.innerHTML = `<a href="points.html" class="nav-user">👤 ${user.name}</a><a href="/logout" class="btn-logout">Log Out</a>`;
 
-        if (user.role === "admin") {
-          alert("Admins don't earn points.");
-          window.location.href = "/adminDashboard.html";
-          return;
-        }
+      const pointsRes = await fetch('/api/points');
+      const pointsData = await pointsRes.json();
+      const points = pointsData.points || 0;
 
-        const pointsRes = await fetch("/api/points");
-        const pointsData = await pointsRes.json();
-        const points = pointsData.points || 0;
-
-        document.getElementById("pointsValue").innerText = points;
-
-        const percent = Math.min(100, (points / 100) * 100);
-        document.getElementById("progressBar").style.width = percent + "%";
-        document.getElementById("progressText").innerText = `${percent.toFixed(0)}%`;
-
-        const badge = document.getElementById("badge");
-        if (points >= 100) {
-          badge.classList.remove("hidden");
-        } else {
-          badge.classList.add("hidden");
-        }
-
-      } catch (error) {
-        console.error("Error loading points:", error);
-      }
+      document.getElementById('pointsValue').textContent = points;
+      const pct = Math.min(100, (points / 100) * 100);
+      document.getElementById('progressBar').style.width = pct + '%';
+      document.getElementById('progressPercent').textContent = pct.toFixed(0) + '%';
+      if (points >= 100) document.getElementById('badgeArea').style.display = 'flex';
+    } catch(e) {
+      console.error(e);
     }
-
-    loadPoints();
-  </script>
+  }
+  loadPoints();
+</script>
 </body>
-
 </html>

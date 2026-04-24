@@ -1,120 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EnviroCycle</title>
-    <link rel="icon" href="./images/favicon.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EnviroCycle – Recycle. Earn. Sustain.</title>
+  <meta name="description" content="EnviroCycle makes recycling easy. Schedule pickups, earn rewards, and shop eco-friendly products made from recycled materials." />
+  <link rel="icon" href="./images/favicon.png" type="image/png" />
+  <link rel="stylesheet" href="/style.css" />
 </head>
-<body class="bg-green-100">
-    <header class="flex justify-between items-center p-6">
-        <h1 class="text-2xl font-bold text-green-700">EnviroCycle♻️</h1>
-        <nav>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="text-green-800 hover:text-green-600">Home</a></li>
-                <li><a href="products.html" class="text-green-800 hover:text-green-600">Products</a></li> <!-- Updated link -->
-                <li><a href="pickup.html" class="text-green-800 hover:text-green-600">Pick Up</a></li>
-                <!-- <li><a href="points.html" class="text-green-800 hover:text-green-600">Points</a></li> -->
-                <li><a href="contact.html" class="text-green-800 hover:text-green-600">Contact</a></li>
-                <li><a href="login.html" class="text-green-800 hover:text-green-600">Log In</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="text-center">
-        <h2 class="text-4xl font-bold text-green-700 mb-4">RECYCLED Products Available</h2>
-        <p class="text-gray-700 mb-10 px-12">Welcome to EnviroCycle! We make recycling easy by collecting your recyclable waste and turning it into eco-friendly products. Shop our innovative recycled items and join us in creating a cleaner, greener future. Let's make a difference together!</p>
-       <a href="contact.html"><button class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 shadow-md mb-6">More info</button></a>
-       <div class="max-w-7xl mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Product 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/RecycledLamps.jpg" alt="Recycled Lamps" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Recycled Lamps</h2>
-                    <p class="text-gray-600">Made from Recycled Plastics</p>
-                    <p class="text-green-600 font-bold text-xl">₹2,999</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-            <!-- Product 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/PackingMaterial.jpg" alt="Packing Material" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Packing Material</h2>
-                    <p class="text-gray-600">Made from Recycled papers</p>
-                    <p class="text-green-600 font-bold text-xl">₹499</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/waterbottles.jpg" alt="Bamboo Water Bottle" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Bamboo Water Bottle</h2>
-                    <p class="text-gray-600">Bottle Made From Bamboo</p>
-                    <p class="text-green-600 font-bold text-xl">₹999</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="../images/RecycledPackaging.jpg" alt="Packing Material" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Packing Material</h2>
-                    <p class="text-gray-600">Made from Recycled papers</p>
-                    <p class="text-green-600 font-bold text-xl">₹699</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-            <!-- Product 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="./images/RecycledPenciles.jpg" alt="Penciles" class="w-full h-60 object-cover">
-                <div class="p-4">
-                    <h2 class="text-lg font-bold">Penciles</h2>
-                    <p class="text-gray-600">Recycled Pencile Made from papers</p>
-                    <p class="text-green-600 font-bold text-xl">₹99</p>
-                    <a href="https://wa.me/919875214808?text=Hi%2C%20I%27m%20interested%20in%20buying%20this%20recycled%20product%20from%20EnviroCycle.">
-                        <button class="mt-4 w-full bg-green-800 text-white py-2 rounded-lg hover:bg-yellow-600 transition">Buy Now</button>
-                    </a>
-                </div>
-            </div>
-        </div>
+<body>
+<div class="bg-mesh"></div>
+<div id="toast-container"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">EnviroCycle <span>♻</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="pickup.html">Pick Up</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li id="navLoginLi"><a href="login.html">Log In</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.5rem;" id="navAuthArea">
+    <a href="signup.html" class="btn btn-primary btn-sm">Get Started</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-badge">🌱 Sustainable Living Platform</div>
+    <h1>Turn Waste Into<br/><span class="highlight">Eco Rewards</span></h1>
+    <p>Schedule free recycling pickups, earn points for every action, and shop premium eco-friendly products — all in one place.</p>
+    <div class="hero-cta">
+      <a href="pickup.html" class="btn btn-primary">Schedule a Pickup →</a>
+      <a href="products.html" class="btn btn-outline">Browse Products</a>
     </div>
-    </main>
-    <script>
-        document.addEventListener("DOMContentLoaded", async () => {
-            try {
-                const res = await fetch("/api/user");
-                if (res.ok) {
-                    const data = await res.json();
-                    if (data.user && data.user.loggedIn) {
-                        const nav = document.querySelector("nav ul");
-                        if (nav) {
-                            const loginLink = Array.from(nav.querySelectorAll("a")).find(a => a.textContent.trim() === "Log In");
-                            if (loginLink) {
-                                const li = loginLink.parentElement;
-                                li.innerHTML = `<a href="points.html" class="text-green-800 hover:text-green-600 font-bold">👤 ${data.user.name}</a>`;
-                                
-                                const logoutLi = document.createElement("li");
-                                logoutLi.innerHTML = `<a href="/logout" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition">Log Out</a>`;
-                                nav.appendChild(logoutLi);
-                            }
-                        }
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching user status:", error);
-            }
-        });
-    </script>
+  </section>
+
+  <!-- STATS BAR -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid-4 reveal">
+        <div class="stat-card green">
+          <div class="stat-icon">♻️</div>
+          <div class="stat-label">Items Recycled</div>
+          <div class="stat-value">12K+</div>
+        </div>
+        <div class="stat-card blue">
+          <div class="stat-icon">🚗</div>
+          <div class="stat-label">Pickups Done</div>
+          <div class="stat-value" id="heroPickups">...</div>
+        </div>
+        <div class="stat-card yellow">
+          <div class="stat-icon">👥</div>
+          <div class="stat-label">Active Users</div>
+          <div class="stat-value" id="heroUsers">...</div>
+        </div>
+        <div class="stat-card red">
+          <div class="stat-icon">🛍️</div>
+          <div class="stat-label">Products</div>
+          <div class="stat-value" id="heroProducts">...</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>How <span style="color:var(--primary-light)">EnviroCycle</span> Works</h2>
+        <p>Three simple steps to a greener lifestyle and real rewards.</p>
+      </div>
+      <div class="grid-3">
+        <div class="feature-card reveal">
+          <div class="feature-icon">📦</div>
+          <h3>1. Schedule a Pickup</h3>
+          <p>Fill out a quick form and we'll come to your door to collect your recyclable waste — plastic, paper, glass, metal.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🏅</div>
+          <h3>2. Earn Points</h3>
+          <p>Get +10 points per pickup and +5 for weekly logins. Accumulate rewards and unlock exclusive badges.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon">🛒</div>
+          <h3>3. Shop Eco Products</h3>
+          <p>Browse our handpicked collection of premium items crafted entirely from recycled and sustainable materials.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Featured <span style="color:var(--primary-light)">Products</span></h2>
+        <p>Eco-friendly goods made from 100% recycled materials. Stylish and sustainable.</p>
+      </div>
+      <div class="grid-3" id="featuredProducts">
+        <!-- Products will be loaded dynamically -->
+      </div>
+      <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+        <a href="products.html" class="btn btn-outline">View All Products →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>Why Choose <span style="color:var(--primary-light)">Us?</span></h2>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1.25rem;">
+        <div class="feature-card reveal"><div class="feature-icon">🆓</div><h3>100% Free Pickup</h3><p>No charges — we come to you and handle the collection.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🔒</div><h3>Secure & Trusted</h3><p>Your data and pickups are managed safely with full transparency.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🌍</div><h3>Real Impact</h3><p>Every pickup contributes to reducing landfill waste and carbon emissions.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🎁</div><h3>Reward System</h3><p>Every action earns points. Stay consistent and unlock bigger badges.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="section" style="padding-bottom:5rem;">
+    <div class="container">
+      <div class="card reveal" style="padding:3rem 2rem; text-align:center; background:linear-gradient(135deg, rgba(34,197,94,0.12),rgba(6,95,70,0.2));">
+        <h2 style="font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:800; margin-bottom:1rem;">Ready to make a difference?</h2>
+        <p style="color:var(--text-secondary); margin-bottom:2rem; max-width:480px; margin-left:auto; margin-right:auto;">Join thousands of users already turning trash into treasure with EnviroCycle.</p>
+        <a href="signup.html" class="btn btn-primary">Create Free Account →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">EnviroCycle ♻</div>
+          <p>Making recycling easy, rewarding, and impactful for communities across India.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="pickup.html">Schedule Pickup</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <a href="login.html">Login</a>
+          <a href="signup.html">Register</a>
+          <a href="points.html">My Points</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>📞 +91 98752 14808</p>
+          <p>✉️ envirocycle@gmail.com</p>
+          <p>📍 123 Eco Street, Green City</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 EnviroCycle. All rights reserved.</p>
+        <p style="color:var(--primary-light);">🌱 Building a greener tomorrow</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="/app.js"></script>
+<script>
+  // Load featured products (first 3)
+  async function loadFeatured() {
+    const staticProducts = [
+      { name: 'Recycled Lamps', description: 'Made from Recycled Plastics', price: '2,999', image: './images/RecycledLamps.jpg' },
+      { name: 'Bamboo Water Bottle', description: 'Bottle Made From Bamboo', price: '999', image: './images/waterbottles.jpg' },
+      { name: 'Eco-friendly Bag', description: 'Made from Recycled tree waste', price: '599', image: './images/Bag.jpg' },
+    ];
+    const container = document.getElementById('featuredProducts');
+    staticProducts.forEach(p => {
+      container.innerHTML += `
+        <div class="card product-card reveal">
+          <div class="product-badge">Eco</div>
+          <img src="${p.image}" alt="${p.name}" onerror="this.src='./images/favicon.png'">
+          <div class="product-card-body">
+            <h3>${p.name}</h3>
+            <p>${p.description}</p>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.75rem;">
+              <span class="product-card-price">₹${p.price}</span>
+              <a href="products.html" class="btn btn-primary btn-sm">View →</a>
+            </div>
+          </div>
+        </div>`;
+    });
+    // Also pull DB products
+    try {
+      const res = await fetch('/api/admin/stats');
+      const stats = await res.json();
+      document.getElementById('heroPickups').textContent = stats.pickups;
+      document.getElementById('heroUsers').textContent = stats.users;
+      document.getElementById('heroProducts').textContent = (stats.products + 11);
+    } catch(e) {
+      document.getElementById('heroPickups').textContent = '50+';
+      document.getElementById('heroUsers').textContent = '200+';
+      document.getElementById('heroProducts').textContent = '11+';
+    }
+  }
+  loadFeatured();
+</script>
 </body>
 </html>
